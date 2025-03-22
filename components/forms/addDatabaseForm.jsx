@@ -20,6 +20,6 @@ export default function AddDatabaseForm(){
     </div>
     </div>
     <Button className="background-color: var(--color-red-300); w-50">Dodaj</Button>
-
+    
     </>)
 }
