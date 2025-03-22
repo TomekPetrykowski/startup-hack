@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Input } from './input';
+import { ImagePlus } from 'lucide-react';
 
 const ImageUpload = ({setImage}) => {
   const [imageSrc, setImageSrc] = useState(null);
@@ -16,30 +18,18 @@ const ImageUpload = ({setImage}) => {
             };
             
             reader.readAsDataURL(file);
-          //   event.target.files = new FileList
             event.target.value = ''
           }
 
     })
-
-    // If a file is selected
     
   };
 
   return (
     <div>
-      <h3>Upload and Display Image</h3>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      {imageSrc && (
-        <div>
-          <h4>Selected Image:</h4>
-          <img
-            src={imageSrc}
-            alt="Selected"
-            style={{ maxWidth: '100%', height: 'auto' }}
-          />
-        </div>
-      )}
+      <h3>Upload an image</h3>
+      <Input type="file" accept="image/*" onChange={handleImageChange} multiple className="w-50 h-50"></Input>
+      <ImagePlus className="relative bottom-27 left-22"></ImagePlus>
     </div>
   );
 };
