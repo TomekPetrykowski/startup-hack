@@ -13,7 +13,7 @@ export default function AddDatabaseForm(){
     <Input placeholder="cena" type="number"/>
     <Textarea placeholder="opis"/>
     <div className="juatify-center">
-    <CarouselSize images={["template.png","template.png","template.png"]}></CarouselSize>
+    <CarouselSize images={["template.png"]}></CarouselSize>
     </div>
     <Button className="background-color: var(--color-red-300);">Dodaj</Button>
 
