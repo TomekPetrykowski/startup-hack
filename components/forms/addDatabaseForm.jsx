@@ -2,9 +2,9 @@ import React from "react";
 import { Input } from "@/components/ui/input"
 // import { Textarea } from "../ui/textarea";
 // import ImageCarousel from "../ui/imageCarousel";
-import { Textarea } from "../textarea";
-import { CarouselSize } from "../imageCarousel";
-import { Button } from "../button";
+import { Textarea } from "../ui/textarea";
+import { CarouselSize } from "../ui/imageCarousel";
+import { Button } from "../ui/button";
 
 export default function AddDatabaseForm(){
     return (
@@ -20,6 +20,6 @@ export default function AddDatabaseForm(){
     </div>
     </div>
     <Button className="background-color: var(--color-red-300); w-50">Dodaj</Button>
-
+    
     </>)
 }
