@@ -6,34 +6,34 @@ async function getData() {
     {
       id: "728ed52f",
       amount: 100,
-      value: 100,
-      name: "template",
+      value: 159.39,
+      name: "Tom Ford",
       desc: "asdasddtrfygyhuijo",
-      img:"/template.png"
+      img:"/produkt1.png"
     },
     {
       id: "728ed52f",
       amount: 55,
-      value: 200,
-      name: "template2",
+      value: 199.99,
+      name: "Eros Flame",
       desc: "asdasddtrfygyhuijo",
-      img:"/template.png"
+      img:"/produkt2.png"
     },
     {
       id: "728ed52f",
       amount: 65,
-      value: 300,
-      name: "template3",
+      value: 120.59,
+      name: "Pour Home Dylan",
       desc: "asdasddtrfygyhuijo",
-      img:"/template.png"
+      img:"/produkt3.png"
     },
     {
       id: "728ed52f",
       amount: 163,
-      value: 400,
-      name: "template4",
+      value: 399.99,
+      name: "Crystal Noir",
       desc: "asdasddtrfygyhuijo",
-      img:"/template.png"
+      img:"/produkt4.png"
     },
   ];
 }
