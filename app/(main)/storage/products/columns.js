@@ -37,6 +37,14 @@ export const columns = [
     enableHiding: false,
   },
   {
+    accessorKey: "img",
+    header: () => <div className="text-right">Zdjęcie</div>,
+    cell: ({ row }) => {
+      return <div className="text-right font-medium w-20 h-20"><img src={row.getValue("img")}></img> </div>;
+    },
+    
+  },
+  {
     accessorKey: "name",
     header: ({ column }) => {
       return (
@@ -74,6 +82,7 @@ export const columns = [
     },
     
   },
+  
   
   {
     id: "actions",

@@ -1,4 +1,4 @@
-import AddDatabaseForm from "@/components/ui/forms/addDatabaseForm";
+import AddDatabaseForm from "@/components/forms/addDatabaseForm";
 import React from "react";
 
 export default function addForm() {
