@@ -38,7 +38,7 @@ export const columns = [
   },
   {
     accessorKey: "img",
-    header: () => <div className="text-right">Zdjęcie</div>,
+    header: () => <div className="text-left">Zdjęcie</div>,
     cell: ({ row }) => {
       return <div className="text-right font-medium w-20 h-20"><img src={row.getValue("img")}></img> </div>;
     },
@@ -72,10 +72,10 @@ export const columns = [
     accessorKey: "value",
     header: () => <div className="text-right">Cena</div>,
     cell: ({ row }) => {
-      const value = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
+      const value = parseFloat(row.getValue("value"));
+      const formatted = new Intl.NumberFormat("pl-PL", {
         style: "currency",
-        currency: "USD",
+        currency: "PLN",
       }).format(value);
 
       return <div className="text-right font-medium">{formatted}</div>;
