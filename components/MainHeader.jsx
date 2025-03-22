@@ -10,10 +10,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { usePathname } from "next/navigation";
-import { useHeaderSlot } from "@/context/HeaderSlotContext";
 
 export const MainHeader = () => {
-  const { headerSlot } = useHeaderSlot();
   const pathSegments = usePathname()
     .split("/")
     .filter((item) => item);
@@ -35,12 +33,9 @@ export const MainHeader = () => {
     "storage/products": "Produkty",
     "storage/products/new": "Dodaj produkt",
     "storage/products/edit": "Edytuj produkt",
-    "storage/statuses": "Statusy",
-    "storage/statuses/new": "Dodaj status",
-    "storage/statuses/edit": "Edytuj status",
     user: "Konto",
-    "user/[name]/chat": "Czat",
-    "user/[name]/notifications": "Powiadomienia",
+    "user/chat": "Czat",
+    "user/notifications": "Powiadomienia",
   };
 
   const getTitle = (pathSegments) => {
@@ -90,7 +85,6 @@ export const MainHeader = () => {
           <h1 className="m-0 p-0 text-2xl">{getTitle(pathSegments)}</h1>
         </div>
       </header>
-      <div>{headerSlot}</div>
     </div>
   );
 };

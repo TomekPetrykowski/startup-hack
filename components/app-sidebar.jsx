@@ -25,16 +25,6 @@ import {
 } from "@/components/ui/sidebar";
 
 const data = {
-  shops: [
-    {
-      name: "Sklep 1",
-      logo: GalleryVerticalEnd,
-    },
-    {
-      name: "Sklep 2",
-      logo: AudioWaveform,
-    },
-  ],
   navMain: [
     {
       title: "Dashboard",
@@ -65,10 +55,6 @@ const data = {
           title: "Dodaj zamówienie",
           url: "/orders/new",
         },
-        {
-          title: "Grupy",
-          url: "/orders/groups",
-        },
       ],
     },
     {
@@ -77,12 +63,12 @@ const data = {
       icon: Bot,
       items: [
         {
-          title: "Dodaj raport",
-          url: "/reports/new",
+          title: "Lista raportów",
+          url: "/reports",
         },
         {
-          title: "Wyślij wiadomości",
-          url: "/reports/send",
+          title: "Wygeneruj raport",
+          url: "/reports/generate",
         },
         {
           title: "Archiwum",
@@ -100,8 +86,8 @@ const data = {
           url: "/storage/products",
         },
         {
-          title: "Statusy",
-          url: "/storage/statuses",
+          title: "Dodaj produkt",
+          url: "/storage/products/new",
         },
       ],
     },
@@ -127,12 +113,12 @@ data.user = {
   menu: [
     {
       title: "Zarejestruj się",
-      url: `/register`,
+      url: `auth?action=register`,
       icon: UserPlus,
     },
     {
       title: "Zaloguj się",
-      url: "/login",
+      url: "auth?action=login",
       icon: LogIn,
     },
   ],
@@ -144,35 +130,27 @@ if (user) {
     menu: [
       {
         title: "Konto",
-        url: `/user/${user.name}`,
+        url: `/user`,
         icon: User,
       },
       {
         title: "Powiadomienia",
-        url: `/user/${user.name}/notifications`,
+        url: `/user/notifications`,
         icon: Bell,
       },
       {
         title: "Wiadomości",
-        url: `/user/${user.name}/chat`,
+        url: `/user/chat`,
         icon: MessageCircle,
       },
       {
         title: "Wyloguj",
-        url: `/user/${user.name}/logout`,
+        url: `/auth?action=logout`,
         icon: LogOut,
       },
     ],
   };
 }
-// useEffect(() => {
-//   setHydrated(true);
-//   if (!currentShop && shops.length) {
-//     setCurrentShop(shops[0]);
-//   }
-// }, [currentShop, shops]);
-
-// if (!hydrated) return null;
 
 export function AppSidebar({ ...props }) {
   const [currentShop, setCurrentShop] = useState(shops[0]);
