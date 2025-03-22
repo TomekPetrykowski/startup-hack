@@ -6,9 +6,35 @@ async function getData() {
     {
       id: "728ed52f",
       amount: 100,
-      name: "pending",
-      desc: "asdasddtrfygyhuijo"
-    }
+      value: 100,
+      name: "template",
+      desc: "asdasddtrfygyhuijo",
+      img:"/template.png"
+    },
+    {
+      id: "728ed52f",
+      amount: 55,
+      value: 200,
+      name: "template2",
+      desc: "asdasddtrfygyhuijo",
+      img:"/template.png"
+    },
+    {
+      id: "728ed52f",
+      amount: 65,
+      value: 300,
+      name: "template3",
+      desc: "asdasddtrfygyhuijo",
+      img:"/template.png"
+    },
+    {
+      id: "728ed52f",
+      amount: 163,
+      value: 400,
+      name: "template4",
+      desc: "asdasddtrfygyhuijo",
+      img:"/template.png"
+    },
   ];
 }
 
@@ -18,6 +44,7 @@ export default async function DemoPage() {
   return (
     <div className="container mx-auto py-10">
       <ProductTable columns={columns} data={data} />
+      
     </div>
   );
 }

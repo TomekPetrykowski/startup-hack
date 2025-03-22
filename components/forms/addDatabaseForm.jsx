@@ -2,9 +2,9 @@ import React from "react";
 import { Input } from "@/components/ui/input"
 // import { Textarea } from "../ui/textarea";
 // import ImageCarousel from "../ui/imageCarousel";
-import { Textarea } from "../ui/textarea";
-import { CarouselSize } from "../ui/imageCarousel";
-import { Button } from "../ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { CarouselSize } from "@/components/ui/imageCarousel";
+import { Button } from "@/components/ui/button";
 
 export default function AddDatabaseForm(){
     return (
