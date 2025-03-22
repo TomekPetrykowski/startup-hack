@@ -10,7 +10,7 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 import { Input } from "./ui/input";
-import { Label } from "@radix-ui/react-dropdown-menu";
+import { Label } from "./ui/l";
 import { useFilters } from "@/context/FilterContext";
 
 export const OrdersPagination = memo(({ itemsCount }) => {
