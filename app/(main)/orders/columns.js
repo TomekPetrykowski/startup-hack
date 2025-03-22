@@ -48,6 +48,20 @@ export const columns = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const status = row.getValue("status");
+
+      return (
+        <div
+          className={`px-2 py-1 rounded-full text-xs font-medium w-fit ${
+            status === "zakończone"
+              ? "bg-green-100 text-green-800"
+              : "bg-yellow-100 text-yellow-800"
+          }`}>
+          {status}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "email",

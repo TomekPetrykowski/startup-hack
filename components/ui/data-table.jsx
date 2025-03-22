@@ -47,9 +47,25 @@ export function DataTable({ columns, data }) {
 
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex gap-4 items-center py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Wyszukaj ID"
+          value={table.getColumn("id")?.getFilterValue() ?? ""}
+          onChange={(event) =>
+            table.getColumn("id")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+        <Input
+          placeholder="Filtruj status"
+          value={table.getColumn("status")?.getFilterValue() ?? ""}
+          onChange={(event) =>
+            table.getColumn("status")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+        <Input
+          placeholder="Filtruj email"
           value={table.getColumn("email")?.getFilterValue() ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
