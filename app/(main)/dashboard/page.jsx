@@ -1,4 +1,3 @@
 export default function DashboardPage() {
-  return <div>Storage</div>;
+  return <div>Dashboard</div>;
 }
-
