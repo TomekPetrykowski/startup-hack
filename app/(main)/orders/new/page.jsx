@@ -1,6 +1,4 @@
-import AddDatabaseForm from "@/components/ui/forms/addDatabaseForm";
-import React from "react";
-
-export default function addForm() {
-  return <AddDatabaseForm />;
+export default function DashboardPage() {
+  return <div>Storage</div>;
 }
+
