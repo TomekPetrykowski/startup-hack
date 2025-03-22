@@ -6,10 +6,12 @@ export default function MainLayout({ children }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
-        <MainHeader />
-        {children}
-      </SidebarInset>
+      <div className="p-4 w-full">
+        <SidebarInset>
+          <MainHeader />
+          {children}
+        </SidebarInset>
+      </div>
     </SidebarProvider>
   );
 }
