@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 import {
   AudioWaveform,
   Bot,
@@ -11,7 +11,6 @@ import {
   LogOut,
   LogIn,
   UserPlus,
-  ShoppingBag,
   MessageCircle,
 } from "lucide-react";
 
@@ -24,8 +23,6 @@ import {
   SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { useUser } from "@/context/UserContext";
-import { useShop } from "@/context/ShopContext";
 
 const data = {
   shops: [
@@ -111,63 +108,83 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }) {
-  const { user } = useUser();
-  const { shops, currentShop, setCurrentShop } = useShop();
+const shops = [
+  {
+    name: "Sklep 1",
+    logo: GalleryVerticalEnd,
+  },
+  {
+    name: "Sklep 2",
+    logo: AudioWaveform,
+  },
+];
 
-  data.shopsData = {
-    shops: shops.map((shop) => ({ ...shop, logo: ShoppingBag })),
-    currentShop: currentShop,
-    setCurrentShop: setCurrentShop,
-  };
+const user = {
+  name: "John Doe",
+};
 
+data.user = {
+  menu: [
+    {
+      title: "Zarejestruj się",
+      url: `/register`,
+      icon: UserPlus,
+    },
+    {
+      title: "Zaloguj się",
+      url: "/login",
+      icon: LogIn,
+    },
+  ],
+};
+
+if (user) {
   data.user = {
+    name: user.name,
     menu: [
       {
-        title: "Zarejestruj się",
-        url: `/register`,
-        icon: UserPlus,
+        title: "Konto",
+        url: `/user/${user.name}`,
+        icon: User,
       },
       {
-        title: "Zaloguj się",
-        url: "/login",
-        icon: LogIn,
+        title: "Powiadomienia",
+        url: `/user/${user.name}/notifications`,
+        icon: Bell,
+      },
+      {
+        title: "Wiadomości",
+        url: `/user/${user.name}/chat`,
+        icon: MessageCircle,
+      },
+      {
+        title: "Wyloguj",
+        url: `/user/${user.name}/logout`,
+        icon: LogOut,
       },
     ],
   };
+}
+// useEffect(() => {
+//   setHydrated(true);
+//   if (!currentShop && shops.length) {
+//     setCurrentShop(shops[0]);
+//   }
+// }, [currentShop, shops]);
 
-  if (user) {
-    data.user = {
-      name: user.name,
-      menu: [
-        {
-          title: "Konto",
-          url: `/user/${user.name}`,
-          icon: User,
-        },
-        {
-          title: "Powiadomienia",
-          url: `/user/${user.name}/notifications`,
-          icon: Bell,
-        },
-        {
-          title: "Wiadomości",
-          url: `/user/${user.name}/chat`,
-          icon: MessageCircle,
-        },
-        {
-          title: "Wyloguj",
-          url: `/user/${user.name}/logout`,
-          icon: LogOut,
-        },
-      ],
-    };
-  }
+// if (!hydrated) return null;
+
+export function AppSidebar({ ...props }) {
+  const [currentShop, setCurrentShop] = useState(shops[0]);
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher shopsData={data.shopsData} />
+        <TeamSwitcher
+          shops={shops}
+          currentShop={currentShop}
+          setCurrentShop={setCurrentShop}
+        />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
