@@ -9,13 +9,17 @@ import { Button } from "../button";
 export default function AddDatabaseForm(){
     return (
     <>
-    <Input placeholder="nazwa"/>
-    <Input placeholder="cena" type="number"/>
-    <Textarea placeholder="opis"/>
-    <div className="juatify-center">
-    <CarouselSize images={["template.png"]}></CarouselSize>
+    <div className="w-300 p-10">
+    <div className="flex place-content-between">
+        <Input placeholder="nazwa" className="w-200 m-5"/>
+        <Input placeholder="cena" type="number" className="w-50 m-5"/>
     </div>
-    <Button className="background-color: var(--color-red-300);">Dodaj</Button>
+    <Textarea placeholder="opis"/>
+    <div className="flex place-content-evenly m-5">
+    <CarouselSize images={[]}></CarouselSize>
+    </div>
+    </div>
+    <Button className="background-color: var(--color-red-300); w-50">Dodaj</Button>
 
     </>)
 }
