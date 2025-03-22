@@ -17,50 +17,53 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+
+// Dane sprzedaży perfum
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { perfum: "Chanel No. 5", sold: 320, fill: "var(--color-main-lightest)" },
+  { perfum: "Dior Sauvage", sold: 280, fill: "var(--color-main-lighter)" },
+  { perfum: "YSL Black Opium", sold: 250, fill: "var(--color-main)" },
+  { perfum: "Armani Acqua", sold: 210, fill: "var(--color-main-darker)" },
+  { perfum: "Paco Rabanne 1M", sold: 180, fill: "var(--color-main-darkest)" },
 ]
 
+// Konfiguracja wykresu
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  sold: {
+    label: "Sprzedane sztuki",
   },
-  chrome: {
-    label: "Chrome",
-    color: "hsl(var(--chart-1))",
+  chanel: {
+    label: "Chanel No. 5",
+    color: "var(--color-main-lightest)",
   },
-  safari: {
-    label: "Safari",
-    color: "hsl(var(--chart-2))",
+  dior: {
+    label: "Dior Sauvage",
+    color: "var(--color-main-lighter)",
   },
-  firefox: {
-    label: "Firefox",
-    color: "hsl(var(--chart-3))",
+  ysl: {
+    label: "YSL Black Opium",
+    color: "var(--color-main)",
   },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))",
+  armani: {
+    label: "Armani Acqua",
+    color: "var(--color-main-darker)",
   },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))",
+  paco: {
+    label: "Paco Rabanne 1M",
+    color: "var(--color-main-darkest)",
   },
 }
 
 export function PieChartComp() {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
+  const totalSold = React.useMemo(() => {
+    return chartData.reduce((acc, curr) => acc + curr.sold, 0)
   }, [])
 
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Sprzedaż</CardTitle>
+        <CardDescription>Styczeń - Czerwiec 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -74,8 +77,8 @@ export function PieChartComp() {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              dataKey="sold"
+              nameKey="perfum"
               innerRadius={60}
               strokeWidth={5}
             >
@@ -94,14 +97,14 @@ export function PieChartComp() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {totalVisitors.toLocaleString()}
+                          {totalSold.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Sprzedane sztuki
                         </tspan>
                       </text>
                     )
@@ -114,10 +117,10 @@ export function PieChartComp() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          Wzrost o 5.2% w tym miesiącu <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Pokazano sprzedaż za ostatnie 6 miesięcy
         </div>
       </CardFooter>
     </Card>

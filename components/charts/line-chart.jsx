@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { TrendingUp } from "lucide-react";
+import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Line } from "recharts";
 
 import {
   Card,
@@ -10,85 +10,62 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-  ChartConfig,
   ChartContainer,
-  ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
+
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+  { miesiąc: "Styczeń", online: 8000 },
+  { miesiąc: "Luty", online: 9500 },
+  { miesiąc: "Marzec", online: 11000 },
+  { miesiąc: "Kwiecień", online: 9000 },
+  { miesiąc: "Maj", online: 13000 },
+  { miesiąc: "Czerwiec", online: 15000 },
+];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
+  online: {
+    label: "Sprzedaż online",
+    color: "var(--color-main-darker)",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
-} 
+};
 
 export function LineChartComp() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Dots</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Sprzedaż online</CardTitle>
+        <CardDescription>Styczeń - Czerwiec 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-main-purple)"
-              strokeWidth={2}
-              dot={{
-                fill: "var(--color-main-purple)",
-              }}
-              activeDot={{
-                r: 6,
-              }}
-            />
-          </LineChart>
+          <ResponsiveContainer width="100%" height={250}>
+            <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="miesiąc" tickLine={false} axisLine={false} tickMargin={8} />
+              <YAxis tickFormatter={(value) => `${value / 1000} tys. zł`} />
+              <Tooltip content={<ChartTooltipContent />} />
+              <Line
+                dataKey="online"
+                type="monotone"
+                stroke="var(--color-main-darker)"
+                strokeWidth={2}
+                dot={{ fill: "var(--color-main-darker)" }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          Sprzedaż wzrosła o 12% w tym miesiącu <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Dane sprzedaży z ostatnich 6 miesięcy
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
